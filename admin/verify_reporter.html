@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>Enhanced Journalism</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <script>
+
+      if(!(localStorage['login']=="success")){
+            window.location.replace("login");
+        }
+          function logout(){
+          alert("logout");
+          localStorage.removeItem("login");
+          localStorage.removeItem("id");
+          window.location.replace("login");
+      }
+
+        window.onbeforeunload = function() {
+
+          localStorage.removeItem(login);
+          localStorage.removeItem(id);
+          return '';
+        };
+        </script>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="home">NEWS</a>
+                </div>
+                <div class="header-holder">
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="reporter_details">Reporter Details</a></li>
+                                <li><a href="verify_news">Verify News</a></li>
+                                <li><a href="../FAQ">FAQ</a></li>
+                                 <li><a href="#" onclick="logout()">Log Out</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="header-title">
+                <div class="">
+                   <h2>Verify Reporter Details</h2>
+                   <br><br>
+                   <div class="col-md-12 col-sm-12 col-xs-12">
+                        <center><P id="notify"></P></center>
+                            <div class="container ">
+                                <div class="col-md-10">
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Enter Name/ E-mail / mobile / Aadhar Id" id="search_reporter"/>
+                                </div>
+                                <div class="col-md-2">
+                                    <br>
+                                    <button  id="search_btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            
+                            <br>
+                            <div class="col-md-12" style="width:100%; overflow-x:scroll;margin:none;padding:none">
+                            <table class="table table-stripped table-responsive " id="summarytable">
+                                <tr>
+                                    <th style="text-align: center">Name</th>
+                                    <th style="text-align: center">E-mail</th>
+                                    <th style="text-align: center">mobile</th>
+                                     <th style="text-align: center">Aadhar Id</th>
+                                    <th style="text-align: center">Occupation</th>
+                                    <th style="text-align: center">Address</th>
+                                    <th style="text-align: center">Gender</th>
+                                    <th style="text-align: center">State</th>
+                                    <th style="text-align: center">Verify Reporter</th>
+                                    <th style="text-align: center">Block Reporter</th>
+                                    
+                                </tr>
+                            </table>
+                         </div>
+                        </div>
+                </div>
+            </div
+        </div>
+           
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+        <script type="text/javascript">
+
+        //onload
+            $(document).ready(function(){
+                $.ajax({
+                    url:"fectch_table.php",
+                    type:"post",
+                    data:{
+                        
+                    },
+                    success:function(data){
+                        
+                        var obj=JSON.parse(data);
+                        var table_content=""
+                        $('#summarytable').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<tr>";
+                            table_content+="<td>"+value.name+"</td>";
+                            table_content+="<td>"+value.email+"</td>";
+                            table_content+="<td>"+value.mobile+"</td>";
+                            table_content+="<td>"+value.aadhar_id+"</td>";
+                            table_content+="<td>"+value.occupation+"</td>";
+                            table_content+="<td>"+value.address+"</td>";
+                            table_content+="<td>"+value.gender+"</td>";
+                            table_content+="<td>"+value.state+"</td>";
+                            table_content+="<td><span class=\"btn btn-info\" style=\"color:#fff\" id=\"v"+value.reporter_id+"\" onclick=\"verify('"+value.reporter_id+"',this.id)\">Verify</span></td>";
+                            table_content+="<td><span class=\"btn btn-danger\" style=\"color:#fff\"  onclick=\"block('"+value.reporter_id+"')\">Block</span></td>";
+                            table_content+="</tr>";
+                        });
+                        $("#summarytable").append(table_content);
+                    }
+                });
+            });
+
+
+            //onclick
+
+            $("#search_btn").on("click",function(){
+
+            var detail=$("#search_reporter").val();
+
+            if(detail){
+                 
+                $.ajax({
+                    url:"search_reporter.php",
+                    type:"post",
+                    data:{
+                        "detail":detail
+                    },
+                    success:function(data){alert(data);
+                        var obj=JSON.parse(data);
+                        var table_content=""
+                        $('#summarytable').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<tr>";
+                            table_content+="<td>"+value.name+"</td>";
+                            table_content+="<td>"+value.email+"</td>";
+                            table_content+="<td>"+value.mobile+"</td>";
+                            table_content+="<td>"+value.aadhar_id+"</td>";
+                            table_content+="<td>"+value.occupation+"</td>";
+                            table_content+="<td>"+value.address+"</td>";
+                            table_content+="<td>"+value.gender+"</td>";
+                            table_content+="<td>"+value.state+"</td>";
+                            table_content+="<td><span class=\"btn btn-info\" style=\"color:#fff\" id=\"v"+value.reporter_id+"\" onclick=\"verify('"+value.reporter_id+"',this.id)\">Verify</span></td>";
+                            table_content+="<td><span class=\"btn btn-danger\" style=\"color:#fff\"  onclick=\"block('"+value.reporter_id+"')\">Block</span></td>";
+                            table_content+="</tr>";
+                        });
+                        $("#summarytable").append(table_content);
+                    }
+                });
+            }
+            else{
+                alert("Enter search keyword");
+                location.reload();
+            }
+         });
+    
+        //verify
+            function verify(rid,vid){
+                
+                var repo_id=rid;
+                if(repo_id){
+                 
+                $.ajax({
+                    url:"verify_repo.php",
+                    type:"post",
+                    data:{
+                        "repo_id":repo_id
+                    },
+                    success:function(data){
+                       alert("Verified Successfully");
+                        var obj=JSON.parse(data);
+                        var table_content=""
+                        $('#summarytable').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<tr>";
+                            table_content+="<td>"+value.name+"</td>";
+                            table_content+="<td>"+value.email+"</td>";
+                            table_content+="<td>"+value.mobile+"</td>";
+                            table_content+="<td>"+value.aadhar_id+"</td>";
+                            table_content+="<td>"+value.occupation+"</td>";
+                            table_content+="<td>"+value.address+"</td>";
+                            table_content+="<td>"+value.gender+"</td>";
+                            table_content+="<td>"+value.state+"</td>";
+                            table_content+="<td><span class=\"btn btn-info\" style=\"color:#fff\" id=\"v"+value.reporter_id+"\" onclick=\"verify('"+value.reporter_id+"',this.id)\">Verify</span></td>";
+                            table_content+="<td><span class=\"btn btn-danger\" style=\"color:#fff\"  onclick=\"block('"+value.reporter_id+"')\">Block</span></td>";
+                            table_content+="</tr>";
+                        });
+                        $("#summarytable").append(table_content);
+                    }
+                });
+            }
+            }
+
+
+             //block
+            function block(rid){
+                
+                var repo_id=rid;
+                if(repo_id){
+                 
+                $.ajax({
+                    url:"block_repo.php",
+                    type:"post",
+                    data:{
+                        "repo_id":repo_id
+                    },
+                    success:function(data){
+                       alert("Blocked Successfully");
+                       location.reload();
+                        var obj=JSON.parse(data);
+                        var table_content=""
+                        $('#summarytable').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<tr>";
+                            table_content+="<td>"+value.name+"</td>";
+                            table_content+="<td>"+value.email+"</td>";
+                            table_content+="<td>"+value.mobile+"</td>";
+                            table_content+="<td>"+value.aadhar_id+"</td>";
+                            table_content+="<td>"+value.occupation+"</td>";
+                            table_content+="<td>"+value.address+"</td>";
+                            table_content+="<td>"+value.gender+"</td>";
+                            table_content+="<td>"+value.state+"</td>";
+                            table_content+="<td><span class=\"btn btn-info\" style=\"color:#fff\" id=\"v"+value.reporter_id+"\" onclick=\"verify('"+value.reporter_id+"',this.id)\">Verify</span></td>";
+                            table_content+="<td><span class=\"btn btn-danger\" style=\"color:#fff\"  onclick=\"block('"+value.reporter_id+"')\">Block</span></td>";
+                            table_content+="</tr>";
+                        });
+                        $("#summarytable").append(table_content);
+                    }
+                });
+            }
+            }
+        </script>
+    </body>
+</html>

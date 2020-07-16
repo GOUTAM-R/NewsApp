@@ -1,0 +1,30 @@
+.tiles{
+	    height: 100px;
+    box-shadow:10px 8px 20px 0px #a7a7a7;
+    margin: 20px;
+    padding: 0px;
+   
+}
+.tiles:hover{
+	    height: 100px;
+    box-shadow:5px 5px 20px 0px #a7a7a7;
+    margin: 20px;
+    padding: 0px;
+    cursor: pointer;
+
+}
+
+.marg{
+	margin:20px 0px;
+}
+.padd{
+    padding:10px 0px;
+}
+
+.left{
+	text-align: left;
+}
+
+.mod_div{
+        box-shadow: 1px 6px 19px 0px #d4d4d4;
+}

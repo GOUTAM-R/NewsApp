@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>NEWS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+         <script>
+
+      if(!(localStorage['login']=="success")){
+            window.location.replace("login");
+        }
+          function logout(){
+          alert("logout");
+          localStorage.removeItem("login");
+          localStorage.removeItem("id");
+          window.location.replace("login");
+      }
+
+        window.onbeforeunload = function() {
+
+          localStorage.removeItem(login);
+          localStorage.removeItem(id);
+          return '';
+        };
+        </script>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <style type="text/css">
+            .tile{
+                background: #f5f5f5;
+                margin: 5px;
+                padding: 20px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="home">NEWS</a>
+                </div>
+                <div class="header-holder">
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="home">Home</a></li>
+                                <li><a href="#" onclick="logout()">Log Out</a></li>
+
+                               </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="header-title">
+                <div class="container">
+                <div class="row">
+                   <a href="Verify_reporter">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Verify Reporter</h2>
+                              <p><i class="fa fa-edit"></i>Accept/Reject request</p>
+                          </center>
+                      </div>
+                    </a>
+
+                    <a href="reporter_details">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Reporter details</h2>
+                              <p><i class="fa fa-user"></i> view reporter details</p>
+                          </center>
+                      </div>
+                    </a>
+                  </div>
+                  </div>    
+                  <div class="container">
+                <div class="row">
+                     <a href="verify_news">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Verify News</h2>
+                              <p><i class="fa fa-pencil"></i> verify news</p>
+                          </center>
+                      </div>
+                    </a>
+
+                     <a href="block_user">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Block reporter</h2>
+                              <p><i class="fa fa-pencil"></i>Block reporter who have posted false news</p>
+                          </center>
+                      </div>
+                    </a>
+                </div>
+                
+                </div>
+                </div>
+            </div>
+        
+           
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+    </body>
+</html>
