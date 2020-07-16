@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>Enhanced Journalism</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+
+
+        
+ 
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="../home/index">NEWS</a>
+                </div>
+                <div class="header-holder">
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="../home/index">News Feeds</a></li>
+                                <li><a href="../register/become_reporter">Become A Reporter</a></li>
+                                <li><a href="../reporter/">Reporter</a></li>
+                                <li><a href="../admin/">Admin</a></li>
+                                <li><a href="../moderator/">Moderator</a></li>
+                                <li><a href="../report_ambulance">Ambulance</a></li>
+                                <li><a href="../report_police">Police</a></li>
+                             </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="header-title">
+                <div class="container">
+                    <h2 style="margin-bottom:20px">Become Reporter</h2>
+                    <form>
+                    <div id="before_otp">
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your Email address" required>
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Mobile</label>
+                            <input type="text" id="mobile" class="form-control" placeholder="Enter your 10 digit mobile number" required>
+                        </div>
+                    </div>
+
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <input type="button" class="form-control btn-info" id="next" value="Next">
+                        </div>
+                    <div id="at_otp">
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Enter Your OTP</label>
+                            <input type="text" id="otp" class="form-control" placeholder="Enter your OTP" >
+                        </div>
+                         <div class="form-group col-md-4 col-md-offset-4">
+                            <input type="button" class="form-control btn-info" id="submit_otp" value="Confirm OTP">
+                        </div>
+                    </div>    
+
+                    <div id="after_otp">    
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Choose Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Choose password" >
+                        </div>
+                        
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Occupation</label>
+                            <input type="text" id="occupation" class="form-control" placeholder="Enter your Occupation / student / etc" required>
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Gender</label>
+                            <select class="form-control" id="gender">
+                                <option selected disabled>Select Your Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Aadhar ID</label>
+                            <input type="text" id="aadhar_id" class="form-control" placeholder="Enter your Aadhar ID">
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>Address</label>
+                            <textarea rows="1" id="address" class="form-control" placeholder="Enter your Address"></textarea>
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <label>State</label>
+                            <input type="text" id="state" class="form-control" placeholder="Enter your State">
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <input type="button" class="form-control btn-info" id="register_reporter" value="SUBMIT">
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <input type="reset" class="form-control btn-danger" >
+                        </div>
+                        <div class="form-group col-md-12">
+                            <p style="color: #fffefe;background-color: #00b19e;padding: 10px;" id="successData"></p>
+                        </div>
+                      </div>  
+                   </form>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+   
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+           var global_otp="";
+              $("#after_otp").hide();
+              $("#at_otp").hide();
+        });
+        $("#next").on("click",function(){
+            $("#at_otp").show();
+            $("#next").hide();
+            $("#before_otp").hide();
+            conf_otp();
+         });
+
+        function conf_otp(){
+            var mobile=$("#mobile").val();
+            var otp_generated= Math.floor((Math.random() * 1000000) + 1);
+            global_otp=otp_generated;
+            alert
+                $.ajax({
+
+                    url:"send_otp.php",
+                    type:"post",
+                    data:{
+                        "mobile":mobile,
+                        "otp_generated":otp_generated
+                    },
+                    success:function(data){
+                        
+                        alert(data);
+
+                        
+                    }
+                });
+        }
+
+
+
+          $("#submit_otp").on("click",function(){
+               var otp=$("#otp").val(); 
+               if (global_otp==otp) {
+                    $("#at_otp").hide();
+                    $("#after_otp").show();
+                   
+               }  else{
+                    alert("Invalid OTP");
+                    location.reload();
+               }
+
+               
+             });
+
+            $("#register_reporter").on("click",function(){
+
+                register();
+
+               
+             });
+            function register(){
+               
+                var name=$("#name").val();
+                var email=$("#email").val();
+                var mobile=$("#mobile").val();
+                var password=$("#password").val();
+               /* var conf_password=$("#conf_password").val();*/
+                var occupation=$("#occupation").val();
+                var gender=$("#gender").val();
+                var aadhar_id=$("#aadhar_id").val();
+                var address=$("#address").val();
+                var state=$("#state").val();
+
+                $.ajax({
+
+                    url:"register_reporter.php",
+                    type:"post",
+                    data:{
+                        "name":name,
+                        "email":email,
+                        "mobile":mobile,
+                        "password":password,
+                       /* "conf_password":conf_password,*/
+                        "occupation":occupation,
+                        "gender":gender,
+                        "aadhar_id":aadhar_id,
+                        "address":address,
+                        "state":state
+                    },
+                    success:function(data){
+                        var msg=data;
+                        alert(msg);
+
+                        document.getElementById("successData").innerHTML = msg;
+                    }
+                });
+            }
+           
+        </script>
+       
+    </body>
+</html>

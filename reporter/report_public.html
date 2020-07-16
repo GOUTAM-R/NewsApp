@@ -1,0 +1,324 @@
+    <!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>Enhanced Journalism</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <script>
+
+      if(!(localStorage['login']=="success")){
+            window.location.replace("login");
+        }
+          function logout(){
+          alert("logout");
+          localStorage.removeItem("login");
+          localStorage.removeItem("id");
+          window.location.replace("login");
+      }
+
+        window.onbeforeunload = function() {
+
+          localStorage.removeItem(login);
+          localStorage.removeItem(id);
+          return '';
+        };
+    </script>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="report_public">NEWS</a>
+                    <p>Hi, <span id="user_name"></span></p>
+                    
+                </div>
+
+                <div class="header-holder">
+
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="report_police">Report to Police</a></li>
+                                <li><a href="report_ambulance">Report to Ambulance</a></li>
+                                <li><a href="FAQ">FAQ</a></li>
+                                <li><a href="#" onclick="logout()">Log Out</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <br>
+            <div class="header-title">
+                <div class="container">
+                   <h2>Report To Public</h2>
+                   <br>
+                   <form>
+                        <div class="form-group">
+                            <label>TITLE</label>
+                            <input type="text" name="title" class="form-control" id="title" value="" placeholder="title">
+                        </div>
+                        <div class="form-group">
+                            <label>DESCRIPTION</label>
+                            <textarea name="description" class="form-control" rows="5" id="description" ></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CATEGORY</label>
+                            <select name="category" class="form-control" id="category">
+                            <option value="National">traffic</option>
+                             <option value="National">Education</option>
+                                <option value="Politics">Politics</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Rural">Rural</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Stock Market">Stock Market</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Business">Business</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="International">International</option>
+                                <option value="National">National</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>City</label>
+                            <input type="button" name="city" id="location" class="form-control" value="Get City" onclick="getLoc()">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>LOCATION</label>
+                            <input type="button" name="street" id="street" class="form-control" value="Get location" onclick="getstreet()">
+                            </select>
+                        </div>
+                            <div class="form-group col-md-4" id="msg_img">
+                                <label>UPLOAD IMAGES</label>
+                                <input type="file" name="image" class="form-control" id="image"  accept=".jpg" value="">
+                            </div>
+                          
+                            <div class="form-group col-md-4" id="msg_video">
+                                <label>UPLOAD VIDEO</label>
+                                <input type="file" name="video" class="form-control" id="video"  accept=".mp4" value="">
+                            </div>
+                            
+                        <div class="form-group col-md-4" id="msg_doc">
+                            <label>UPLOAD DOCUMENTS</label>
+                            <input type="file" name="document" class="form-control" id="document"  accept=".pdf, .docx" value="">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="button" class="form-control btn-info" value="Post News" onclick="post_news()">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="reset" class="form-control btn-danger" >
+                            </div>
+                        </div>
+                   </form>
+                </div>
+            </div
+        </div>
+           
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+        <script src="get_user.js"></script>
+
+        <script type="text/javascript">
+        var image_path="";
+                var video_path="";
+                var document_path="";
+        
+      
+                $('#image').on('change', function () {
+
+                    var file_data = $('#image').prop('files')[0];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
+                    $.ajax({
+                        url: 'upload.php', // point to server-side PHP script 
+                        dataType: 'text', // what to expect back from the PHP script
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'post',
+                        success: function (response) {
+                            alert(response);
+                            $('#msg_img').html(response); // display success response from the PHP script
+                            image_path=response;
+                        },
+                        error: function (response) {
+                            $('#msg_img').html(response); // display error response from the PHP script
+                        }
+                    });
+                });
+
+                $('#video').on('change', function () {
+
+                    var file_data = $('#video').prop('files')[0];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
+                    $.ajax({
+                        url: 'upload.php', // point to server-side PHP script 
+                        dataType: 'text', // what to expect back from the PHP script
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'post',
+                        success: function (response) {
+                            alert(response);
+                            $('#msg_video').html(response); // display success response from the PHP script
+                            video_path=response;
+                        },
+                        error: function (response) {
+                            $('#msg_video').html(response); // display error response from the PHP script
+                        }
+                    });
+                });
+
+                $('#document').on('change', function () {
+
+                    var file_data = $('#document').prop('files')[0];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
+                    $.ajax({
+                        url: 'upload.php', // point to server-side PHP script 
+                        dataType: 'text', // what to expect back from the PHP script
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'post',
+                        success: function (response) {
+                            alert(response);
+                            $('#msg_doc').html(response); // display success response from the PHP script
+                            document_path=response;
+                        },
+                        error: function (response) {
+                            $('#msg_doc').html(response); // display error response from the PHP script
+                        }
+                    });
+                });
+           
+           
+         
+
+
+        //////////////////////l=get location
+        function getLoc(){
+
+            if (navigator.geolocation) { 
+                navigator.geolocation.getCurrentPosition(showCity);
+            } else { 
+                $('#location').html('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function showCity(position) {
+
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            $.ajax({
+                type:'POST',
+                url:'getLocation.php',
+                data:'latitude='+latitude+'&longitude='+longitude,
+                success:function(msg){
+                    if(msg){
+
+                       $("#location").val(msg);
+                    }else{
+                        $("#location").val('Not Available');
+                    }
+                }
+            });
+        }
+
+         //////////////////////l=get location street
+        function getstreet(){
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLocation);
+            } else { 
+                $('#street').html('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function showLocation(position) {
+
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            $.ajax({
+                type:'POST',
+                url:'getStreet.php',
+                data:'latitude='+latitude+'&longitude='+longitude,
+                success:function(msg){
+                    if(msg){
+                        
+                       $("#street").val(msg);
+                    }else{
+                        $("#street").val('Not Available');
+                    }
+                }
+            });
+        }
+
+        ////////////////////////////
+      function post_news(){
+        
+        var title = $("#title").val();
+        var description=$("#description").val();
+        var category=$("#category").val();
+        var city=$("#location").val();
+        var street=$("#street").val();
+        var image=image_path;
+        var video=video_path;
+        var document=document_path;
+        var id=localStorage.getItem("id");
+        
+        $.ajax({
+                   url:"post_news.php",
+                    type:"post",
+                    
+                    data:{
+                        "title" :title,
+                      "description" :description,
+                      "category" :category,
+                      "city" :city,
+                      "street" :street,
+                      "image" :image,
+                      "video" :video,
+                      "document" :document,
+                      "id" :id
+                    },
+                    success:function(data){
+                       alert(data);
+                        
+                        
+                            
+                        }
+                });
+      }
+        </script>
+    </body>
+</html>
