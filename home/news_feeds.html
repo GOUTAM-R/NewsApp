@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>Enhanced Journalism</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="news_feeds">NEWS</a>
+                    
+                </div>
+
+                    
+               
+               
+                <div class="header-holder">
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="news_feeds">News Feeds</a></li>
+                                <li><a href="FAQ">FAQ</a></li>
+                                
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="header-title">
+                <div class="container">
+                    <h2>News Feeds</h2>
+                    <br><br>
+                <div id="news_fetch"></div>
+                    <!-- <div class="left col-md-12 marg mod_div padd">
+                        <div class="col-md-4">
+                            <h3>This the Title of the News</h3>
+                            <hr> <strong>2017-05-15 04:15:15</strong><hr>
+                            <div> Find out what 64,000 developers like you think about computer programming
+                                 The most loved, dreaded, and wanted technologies.
+                                ow much money devs make and how they prefer to work.
+                                 At long last, the answer to “How do you pronounce GIF?
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                                <div class="col-md-6">
+                                    <img src="../media_files/20-zoopworld.jpg" alt="No Images" width="100%" height="auto">
+                               </div>
+                                <div class="col-md-6">
+                                    <video width="100%" height="auto" controls autoplay muted loop>
+                                      <source src="../media_files/My Movie.mp4" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="col-md-12">
+                                    <br>
+                                    <a href="../media_files/LEAVE CONSTRAINTS.docx">
+                                      <button class="btn btn-info">View / Download Documents</button>
+                                    </a>
+                               </div>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="submit" class="btn btn-info" value="Push This News">
+                            
+                            <input type="button" class="btn btn-danger" value="Abort this News">
+                        </div>
+                    </div> -->
+
+                   
+
+                </div>
+            </div
+        </div>
+           
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $.ajax({
+                    url:"fetch_news.php",
+                    type:"post",
+                    data:{
+                        
+                    },
+                    success:function(data){
+                       
+                        var obj=JSON.parse(data);
+                        
+                        var table_content=""
+                        $('#news_fetch').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<div class=\"left col-md-12 marg mod_div padd\">";
+                            table_content+="<div class=\"col-md-4\">";
+                            table_content+="<h3>"+value.title+"</h3>";
+                            table_content+="<hr> <strong>"+value.date+"</strong><hr>";
+                            table_content+="<div>"+value.description+"</div> </div>";
+                            table_content+="<div class=\"col-md-8\">";
+                            table_content+="<div class=\"col-md-6\">";
+                            table_content+=" <img src=\""+value.image+"\" alt=\"No Images\" width=\"100%\" height=\"auto\">";
+                            table_content+="</div> <div class=\"col-md-6\">";
+                            table_content+="<video width=\"100%\" height=\"auto\" controls autoplay muted loop>";
+                            table_content+="<source src=\""+value.video+"\" type=\"video/mp4\">";
+                            table_content+="Your browser does not support the video tag";
+                            table_content+="</video> </div> <div class=\"col-md-12\"> <br>";
+                            table_content+="<a href=\""+value.document+"\">";
+                            table_content+="<button class=\"btn btn-info\">View / Download Documents</button>";
+                            table_content+="</a></div></div> <div class=\"row\">";
+                            table_content+="<div class=\"col-md-12\"> ";
+                            
+                            table_content+="</div></div></div>";
+                        });
+                        $("#news_fetch").append(table_content);
+                    }
+                });
+         });
+           
+
+           function push(nid){
+            var nid=nid;
+             $.ajax({
+                       url:"push_news.php",
+                        type:"post",
+                        data:{
+                            "nid" :nid
+                        },
+                        success:function(data){
+                           alert(data);
+                            
+                            
+                                
+                            }
+                });
+           }
+        </script>
+    </body>
+</html>

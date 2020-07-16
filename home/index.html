@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+        <title>NEWS</title>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Poppins:400,500,600,700|Hind:400,500,600,700|Source+Sans+Pro:400,500,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../assets/css/font-awesome.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+        <link rel="stylesheet" href="../assets/css/linea.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+        <style type="text/css">
+            .tile{
+                background: #f5f5f5;
+                margin: 5px;
+                padding: 20px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <a href="index">NEWS </a>
+                    <a href="#" id="toggle_down" onclick="toggle_down()"><i class="fa fa-toggle-down" style="margin-left: 10px;font-size: 25px"></i> </a>
+                    <a href="#" id="toggle_up" onclick="toggle_up()"><i class="fa fa-toggle-up" style="margin-left: 10px;font-size: 25px"></i> </a>
+                </div>
+                <div class="header-holder">
+                    <a href="#" class="hamburger">
+                        <div class="line"></div>
+                    </a>
+                    <div class="menu-toggle">
+                        <div class="menu-holder" id="menu-holder">
+                            <ul class="menu" id="menu">
+                                <li><a href="index">Home</a></li>
+                                <li><a href="../register/become_reporter">Become A Reporter</a></li>
+                                <li><a href="../reporter/">Reporter</a></li>
+                                <li><a href="../admin/">Admin</a></li>
+                                <li><a href="../moderator/">Moderator</a></li>
+                                <li><a href="../ambulance">Ambulance</a></li>
+                                <li><a href="../police">Police</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="header-title">
+                <div class="container" id="tiles">
+                <div class="row">
+                    <a href="index">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>News</h2>
+                              <p><i class="fa fa-home"></i> News Feeds</p>
+                          </center>
+                      </div>
+                    </a>
+
+                    <a href="../register/become_reporter">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Become a Reporter</h2>
+                              <p><i class="fa fa-edit"></i> Register to Become a Reporter</p>
+                          </center>
+                      </div>
+                    </a>
+
+                    <a href="../reporter">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Reporter</h2>
+                              <p><i class="fa fa-user"></i> Login as Reporter</p>
+                          </center>
+                      </div>
+                    </a>
+                </div>
+                <div class="row">
+                    <a href="../admin/">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Admin</h2>
+                              <p><i class="fa fa-user"></i> Login as Admin</p>
+                          </center>
+                      </div>
+                    </a>
+                    <a href="../moderator/">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Moderator</h2>
+                              <p><i class="fa fa-user"></i> Login as Moderator</p>
+                          </center>
+                      </div>
+                    </a>
+                    <a href="../ambulance/">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Ambulance</h2>
+                              <p><i class="fa fa-user"></i> Login as Ambulance</p>
+                          </center>
+                      </div>
+                    </a>
+                </div>  
+                <div class="row">
+                   
+                    <a href="../police/">
+                      <div class="col-md-3 tile">
+                          <center>
+                              <h2>Police</h2>
+                              <p><i class="fa fa-user"></i> Login as Police</p>
+                          </center>
+                      </div>
+                    </a>
+                    
+                </div>
+                </div>
+                <div class="container" >
+                  <div class="col-md-12">
+                    <select class="form-control" value="" onchange="fetch_newsx(this.value)">
+                        <option value="National">traffic</option>
+                             <option value="National">Education</option>
+                                <option value="Politics">Politics</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Rural">Rural</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Stock Market">Stock Market</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Business">Business</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="International">International</option>
+                                <option value="National">National</option>
+                    </select>
+                  </div>
+                  <div id="news_fetch"></div>
+                </div>
+            </div>
+        
+           
+        <script src="../assets/js/jquery-2.1.4.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/theia-sticky-sidebar.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/typed.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+              $("#tiles").hide();
+              $("#toggle_up").hide();
+
+                $.ajax({
+                    url:"fetch_news.php",
+                    type:"post",
+                    data:{
+                        
+                    },
+                    success:function(data){
+                       
+                        var obj=JSON.parse(data);
+                        
+                        var table_content=""
+                        $('#news_fetch').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<div class=\"left col-md-12 marg mod_div padd\">";
+                            table_content+="<div class=\"col-md-4\">";
+                            table_content+="<h3>"+value.title+"</h3>";
+                            table_content+="<hr> <strong>"+value.date+"</strong><hr>";
+                            table_content+="<div>"+value.description+"</div> </div>";
+                            table_content+="<div class=\"col-md-8\">";
+                            table_content+="<div class=\"col-md-6\">";
+                            table_content+=" <img src=\""+value.image+"\" alt=\"No Images\" width=\"100%\" height=\"auto\">";
+                            table_content+="</div> <div class=\"col-md-6\">";
+                            table_content+="<video width=\"100%\" height=\"auto\" controls autoplay muted loop>";
+                            table_content+="<source src=\""+value.video+"\" type=\"video/mp4\">";
+                            table_content+="Your browser does not support the video tag";
+                            table_content+="</video> </div> <div class=\"col-md-12\"> <br>";
+                            table_content+="<a href=\""+value.document+"\">";
+                            table_content+="<button class=\"btn btn-info\">View / Download Documents</button>";
+                            table_content+="</a></div></div> <div class=\"row\">";
+                            table_content+="<div class=\"col-md-12\"> ";
+                            
+                            table_content+="</div></div></div>";
+
+                        });
+                        $("#news_fetch").append(table_content);
+                    }
+                });
+         });
+           
+
+           function push(nid){
+            var nid=nid;
+             $.ajax({
+                       url:"push_news.php",
+                        type:"post",
+                        data:{
+                            "nid" :nid
+                        },
+                        success:function(data){
+                           alert(data);
+                            
+                            
+                                
+                            }
+                });
+           }
+           function toggle_down(){
+              $("#tiles").show();
+              $("#toggle_up").show();
+
+              $("#toggle_down").hide();
+           }
+
+           function toggle_up(){
+              $("#tiles").hide();
+              $("#toggle_up").hide();
+
+              $("#toggle_down").show();
+           }
+
+
+           function fetch_newsx(cat){
+            var cat=cat;
+              $("#tiles").hide();
+              $("#toggle_up").hide();
+
+                $.ajax({
+                    url:"fetch_newsx.php",
+                    type:"post",
+                    data:{
+                        'cat':cat
+                    },
+                    success:function(data){
+                       
+                        var obj=JSON.parse(data);
+                        
+                        var table_content=""
+                        $('#news_fetch').find( 'tr:not(:first)' ).remove();
+                        $.each(obj,function(index,value){
+                            table_content+="<div class=\"left col-md-12 marg mod_div padd\">";
+                            table_content+="<div class=\"col-md-4\">";
+                            table_content+="<h3>"+value.title+"</h3>";
+                            table_content+="<hr> <strong>"+value.date+"</strong><hr>";
+                            table_content+="<div>"+value.description+"</div> </div>";
+                            table_content+="<div class=\"col-md-8\">";
+                            table_content+="<div class=\"col-md-6\">";
+                            table_content+=" <img src=\""+value.image+"\" alt=\"No Images\" width=\"100%\" height=\"auto\">";
+                            table_content+="</div> <div class=\"col-md-6\">";
+                            table_content+="<video width=\"100%\" height=\"auto\" controls autoplay muted loop>";
+                            table_content+="<source src=\""+value.video+"\" type=\"video/mp4\">";
+                            table_content+="Your browser does not support the video tag";
+                            table_content+="</video> </div> <div class=\"col-md-12\"> <br>";
+                            table_content+="<a href=\""+value.document+"\">";
+                            table_content+="<button class=\"btn btn-info\">View / Download Documents</button>";
+                            table_content+="</a></div></div> <div class=\"row\">";
+                            table_content+="<div class=\"col-md-12\"> ";
+                            
+                            table_content+="</div></div></div>";
+
+                        });
+                        $("#news_fetch").html(table_content);
+                    }
+                });
+         }
+           
+        </script>
+    </body>
+</html>
